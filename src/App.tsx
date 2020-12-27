@@ -1,38 +1,40 @@
-import * as React from "react"
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import React from "react";
 
-export const App = () => (
-  <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
-  </ChakraProvider>
-)
+import FirstAndSecond from "./components/FirstAndSecond";
+
+import { GlobalStyles } from "./styles/GlobalStyles";
+import { Main, Section, Sticky } from "./styles";
+import Header from "./components/Header";
+
+export const App: React.FC = () => {
+  React.useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  return (
+    <>
+      <GlobalStyles />
+
+      <Header />
+
+      <Main style={{ height: "1600vh" }}>
+        <Section style={{ height: "72.7%" }}>
+          <FirstAndSecond />
+        </Section>
+
+        <Section style={{ height: "9.7%" }}>
+          <Sticky className="third" />
+        </Section>
+
+        <Section style={{ height: "10.1% " }}>
+          <Sticky className="fourth " />
+        </Section>
+      </Main>
+    </>
+  );
+};
+
+// Using framer-motion
+// aimations with css
+// styled-components
+// ReactJS
